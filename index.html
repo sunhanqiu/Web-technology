@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Short description -->
+    <meta name="description" content="Learning HTML is a beginner-friendly website that introduces basic HTML structure, common tags, links, images, lists, and simple styling for new web developers.">
+    <title>Learning HTML</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
+
+    <!-- App icon -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234ea1ff'/><text x='50' y='.9em' font-size='50' text-anchor='middle' fill='white' font-weight='bold'>HTML</text></svg>">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Comic Sans MS", "Chalkboard SE", "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fffaf0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation bar */
+        .navbar {
+            background: #ffffff;
+            border-bottom: 4px dashed #ff9aa2;
+            padding: 14px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(255, 182, 217, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: #ffe9a8;
+            border: 3px solid #ffd36e;
+            color: #7a5c00;
+            padding: 10px 22px;
+            border-radius: 18px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #ffd36e;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: #4ea1ff;
+            border-color: #2b7cd3;
+            color: white;
+        }
+
+        /* Cover image */
+        .cover {
+            width: 100%;
+            height: 380px;
+            background:
+                radial-gradient(circle at 20% 20%, #ffd36e 0 8%, transparent 9%),
+                radial-gradient(circle at 80% 10%, #9be7ff 0 10%, transparent 11%),
+                radial-gradient(circle at 60% 80%, #ffb6d9 0 12%, transparent 13%),
+                linear-gradient(160deg, #ffe9a8, #ffc3d7, #b5f0ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 6px dashed #ff9aa2;
+        }
+
+        .cover h1 {
+            font-size: 56px;
+            color: #ffffff;
+            text-shadow:
+                4px 4px 0 #ff6f91,
+                8px 8px 0 #4ea1ff;
+            letter-spacing: 2px;
+            z-index: 2;
+        }
+
+        .cover::before,
+        .cover::after {
+            content: "";
+            position: absolute;
+            background-repeat: no-repeat;
+            background-size: contain;
+            z-index: 1;
+        }
+
+        .cover::before {
+            width: 180px;
+            height: 180px;
+            left: 8%;
+            bottom: 20px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><text y='150' font-size='140'>🎨</text></svg>");
+        }
+
+        .cover::after {
+            width: 200px;
+            height: 200px;
+            right: 6%;
+            bottom: 10px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><text y='150' font-size='140'>💻</text></svg>");
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .intro,
+        .quote-card,
+        .info-card,
+        .about-card,
+        .knowledge-list {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 6px 0 #ffd1dc, 0 10px 20px rgba(255, 182, 217, 0.25);
+            border: 3px solid #ffffff;
+        }
+
+        h2 {
+            color: #ff6f91;
+            margin-bottom: 14px;
+            font-size: 28px;
+        }
+
+        p {
+            color: #555;
+            font-size: 17px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            color: #4ea1ff;
+            margin: 40px 0 18px;
+            padding-left: 14px;
+            border-left: 6px solid #ffd36e;
+        }
+
+        /* Icon in center */
+        .center-icon-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .website-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #4ea1ff, #ff9aa2);
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 5px 0 #ffd36e;
+            margin-bottom: 14px;
+        }
+
+        .center-icon-section h3 {
+            color: #4ea1ff;
+            margin-bottom: 8px;
+            font-size: 22px;
+        }
+
+        /* Quotes section */
+        .quote-card {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .quote-text {
+            font-size: 22px;
+            color: #444;
+            font-style: italic;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .quote-author {
+            font-size: 16px;
+            color: #ff6f91;
+            font-weight: bold;
+        }
+
+        .quote-btn {
+            display: block;
+            margin: 0 auto;
+            background: #4ea1ff;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 18px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #2b7cd3;
+            transition: all 0.2s ease;
+        }
+
+        .quote-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #2b7cd3;
+        }
+
+        /* Knowledge list */
+        .knowledge-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .knowledge-list li {
+            background: #fffaf0;
+            margin: 10px 0;
+            padding: 14px 18px;
+            border-radius: 16px;
+            border-left: 6px solid #ff9aa2;
+            font-size: 17px;
+            color: #444;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #888;
+            font-size: 15px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .cover h1 {
+                font-size: 40px;
+            }
+
+            .cover::before,
+            .cover::after {
+                width: 120px;
+                height: 120px;
+            }
+
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <button class="nav-btn active" onclick="showPage('home')">Home</button>
+            <button class="nav-btn" onclick="showPage('quotes')">Quotes</button>
+            <button class="nav-btn" onclick="showPage('information')">Information</button>
+            <button class="nav-btn" onclick="showPage('about')">About</button>
+        </div>
+    </nav>
+
+    <!-- Cover Image -->
+    <header class="cover">
+        <h1>Learning HTML</h1>
+    </header>
+
+    <main class="container">
+
+        <!-- Home Page -->
+        <section id="home" class="page-section active">
+            <div class="intro">
+                <h2>Welcome to Learning HTML</h2>
+                <p>This website is a simple homework project for beginners who want to learn the basics of HTML. It includes a cover image, website description, famous programming quotes, and basic HTML knowledge points in a fun cartoon style.</p>
+            </div>
+
+            <div class="center-icon-section">
+                <div class="website-icon">HTML</div>
+                <h3>Website Icon</h3>
+                <p>This is the small icon that represents my website.</p>
+            </div>
+        </section>
+
+        <!-- Quotes Page -->
+        <section id="quotes" class="page-section">
+            <h2 class="section-title">Famous Programming Quotes</h2>
+            
+            <div class="quote-card">
+                <p class="quote-text" id="quoteText">"Any fool can write code that a computer can understand. Good programmers write code that humans can understand."</p>
+                <p class="quote-author" id="quoteAuthor">— Martin Fowler</p>
+            </div>
+
+            <button class="quote-btn" onclick="nextQuote()">Show me another quote!</button>
+        </section>
+
+        <!-- Information Page -->
+        <section id="information" class="page-section">
+            <h2 class="section-title">What I Learned About HTML</h2>
+            
+            <div class="knowledge-list">
+                <ul>
+                    <li>🏷️ HTML uses tags to build the structure of a webpage.</li>
+                    <li>📝 I can use headings, paragraphs, lists, links, and images to create content.</li>
+                    <li>🎨 CSS can change colors, fonts, spacing, and layout to make the page look nicer.</li>
+                    <li>📱 Responsive design helps the website look good on both computers and phones.</li>
+                    <li>🔗 Links allow users to jump from one page or website to another.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page-section">
+            <h2 class="section-title">About This Project</h2>
+            
+            <div class="about-card">
+                <h2>About This Website</h2>
+                <p>This is a beginner HTML learning website made as a class homework assignment. It is built with pure HTML and CSS, and designed in a cute cartoon style to make learning web development more interesting.</p>
+                <br>
+                <p>The purpose of this project is to practice basic HTML structure, page layout, simple styling, and interactive tab switching.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Learning HTML | Homework Project</p>
+    </footer>
+
+    <script>
+        // Page switching function
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Show target page
+            document.getElementById(pageId).classList.add('active');
+
+            // Update button active state
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Quotes data
+        const quotes = [
+            {
+                text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+                author: "Martin Fowler"
+            },
+            {
+                text: "Code is like humor. When you have to explain it, it’s bad.",
+                author: "Cory House"
+            },
+            {
+                text: "First, solve the problem. Then, write the code.",
+                author: "John Johnson"
+            },
+            {
+                text: "The best error message is the one that never shows up.",
+                author: "Thomas Fuchs"
+            },
+            {
+                text: "Learning to code is useful no matter what your career ambitions are.",
+                author: "Arianna Huffington"
+            },
+            {
+                text: "HTML is the foundation of the web. It all starts with one simple tag.",
+                author: "Web Development Community"
+            },
+            {
+                text: "The only way to learn a new programming language is by writing programs in it.",
+                author: "Brian Kernighan"
+            }
+        ];
+
+        let currentQuoteIndex = 0;
+
+        function nextQuote() {
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+            const quote = quotes[currentQuoteIndex];
+            document.getElementById('quoteText').textContent = `"${quote.text}"`;
+            document.getElementById('quoteAuthor').textContent = `— ${quote.author}`;
+        }
+    </script>
+
+</body>
+</html>
