@@ -41,9 +41,9 @@
         const scoreText = document.getElementById("score");
         let score = 0;
 
-        // 鼠标靠近按钮时逃跑
+   
         btn.addEventListener("mouseenter", runAway);
-        // 触屏设备也支持
+       
         btn.addEventListener("touchstart", function (e) {
             e.preventDefault();
             runAway();
@@ -53,24 +53,24 @@
             score++;
             scoreText.textContent = score;
 
-            // 计算可移动范围
+         
             const areaRect = area.getBoundingClientRect();
             const btnRect = btn.getBoundingClientRect();
 
             const maxX = areaRect.width - btnRect.width - 20;
             const maxY = areaRect.height - btnRect.height - 20;
 
-            // 随机新位置
+           
             const newX = Math.floor(Math.random() * maxX) + 10;
             const newY = Math.floor(Math.random() * maxY) + 10;
 
-            // 移动按钮
+            
             btn.style.left = newX + "px";
             btn.style.top = newY + "px";
             btn.style.transform = "none";
         }
 
-        // 真的点到了就给彩蛋
+      
         btn.addEventListener("click", function () {
             alert("🎉 Wow! You actually clicked it! You are amazing!");
             score = 0;

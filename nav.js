@@ -1,12 +1,12 @@
-// 页面加载完成后注入导航
+
 document.addEventListener("DOMContentLoaded", function () {
-    // 创建导航容器
+
     const navPlaceholder = document.createElement("div");
     navPlaceholder.id = "nav-placeholder";
-    // 插入到 body 最前面
+   
     document.body.prepend(navPlaceholder);
 
-    // 导航HTML代码（只写这一次）
+   
     const navHTML = `
     <nav class="navbar">
         <div class="nav-container">
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     navPlaceholder.innerHTML = navHTML;
 
-    // 自动给当前页导航按钮加上高亮
+    
     const currentPage = location.pathname.split("/").pop();
     const pageMap = {
         "index.html": "nav-home",

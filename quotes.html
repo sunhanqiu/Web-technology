@@ -25,7 +25,7 @@
 
         <div class="card">
             <ul class="styled-list" id="allQuotes">
-                <!-- 名言列表会由JS自动生成 -->
+               
             </ul>
         </div>
     </main>
@@ -35,7 +35,7 @@
     </footer>
 
     <script>
-        // 16条编程名言
+      
         const quotes = [
             { text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler" },
             { text: "Code is like humor. When you have to explain it, it’s bad.", author: "Cory House" },
@@ -55,13 +55,13 @@
             { text: "Creativity is intelligence having fun. Coding is creativity in action.", author: "Albert Einstein (adapted)" }
         ];
 
-        // 页面加载时显示随机名言 + 生成完整列表
+        
         window.addEventListener("load", function () {
             showRandomQuote();
             renderAllQuotes();
         });
 
-        // Hero区域随机显示一条
+       
         function showRandomQuote() {
             const randomIndex = Math.floor(Math.random() * quotes.length);
             const q = quotes[randomIndex];
@@ -69,7 +69,7 @@
             document.getElementById("heroAuthor").textContent = `— ${q.author}`;
         }
 
-        // 渲染全部名言列表
+        
         function renderAllQuotes() {
             const list = document.getElementById("allQuotes");
             list.innerHTML = quotes.map(q =>
