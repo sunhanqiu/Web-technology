@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning HTML | Quotes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
+    <script src="nav.js"></script>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>Programming Quotes</h1>
+        <p class="quote-text" id="heroQuote" style="color:white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">"Any fool can write code that a computer can understand. Good programmers write code that humans can understand."</p>
+        <p class="quote-author" id="heroAuthor" style="color:white;">— Martin Fowler</p>
+    </header>
+
+    <main class="container">
+        <div style="text-align:center; margin-bottom:30px;">
+            <button class="cute-btn" onclick="showRandomQuote()">Show Another Random Quote</button>
+        </div>
+
+        <h2 class="section-title">All 16 Famous Quotes</h2>
+
+        <div class="card">
+            <ul class="styled-list" id="allQuotes">
+                <!-- 名言列表会由JS自动生成 -->
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Learning HTML | Web Technology Homework</p>
+    </footer>
+
+    <script>
+        // 16条编程名言
+        const quotes = [
+            { text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler" },
+            { text: "Code is like humor. When you have to explain it, it’s bad.", author: "Cory House" },
+            { text: "First, solve the problem. Then, write the code.", author: "John Johnson" },
+            { text: "The best error message is the one that never shows up.", author: "Thomas Fuchs" },
+            { text: "Learning to code is useful no matter what your career ambitions are.", author: "Arianna Huffington" },
+            { text: "The only way to learn a new programming language is by writing programs in it.", author: "Brian Kernighan" },
+            { text: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+            { text: "Programs must be written for people to read, and only incidentally for machines to execute.", author: "Harold Abelson" },
+            { text: "It's not a bug – it's an undocumented feature.", author: "Anonymous" },
+            { text: "Before software can be reusable it first has to be usable.", author: "Ralph Johnson" },
+            { text: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
+            { text: "Make it work, make it right, make it fast.", author: "Kent Beck" },
+            { text: "HTML is the foundation of everything we build on the web.", author: "Web Dev Community" },
+            { text: "Every great developer you know got there by solving problems they were unqualified to solve.", author: "Patrick McKenzie" },
+            { text: "The most important property of a program is whether it accomplishes the intention of its user.", author: "C.A.R. Hoare" },
+            { text: "Creativity is intelligence having fun. Coding is creativity in action.", author: "Albert Einstein (adapted)" }
+        ];
+
+        // 页面加载时显示随机名言 + 生成完整列表
+        window.addEventListener("load", function () {
+            showRandomQuote();
+            renderAllQuotes();
+        });
+
+        // Hero区域随机显示一条
+        function showRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const q = quotes[randomIndex];
+            document.getElementById("heroQuote").textContent = `"${q.text}"`;
+            document.getElementById("heroAuthor").textContent = `— ${q.author}`;
+        }
+
+        // 渲染全部名言列表
+        function renderAllQuotes() {
+            const list = document.getElementById("allQuotes");
+            list.innerHTML = quotes.map(q =>
+                `<li>💬 "${q.text}" <br><small style="color:#ff6f91; font-weight:bold;">— ${q.author}</small></li>`
+            ).join("");
+        }
+    </script>
+
+</body>
+</html>

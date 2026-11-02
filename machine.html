@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning HTML | Useless Machine</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
+    <script src="nav.js"></script>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>The Useless Machine</h1>
+        <p>Try to click the button... if you can catch it. 😈</p>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h2>Can You Catch Me?</h2>
+            <p>Move your mouse towards the button. Every time you get close, it will run away to a random spot. It is totally useless — and totally fun!</p>
+            <p style="margin-top:10px; color:#ff6f91; font-weight:bold;">Score: <span id="score">0</span> times you almost got it!</p>
+        </div>
+
+        <div class="game-area" id="gameArea">
+            <button class="run-btn" id="runBtn">Click Me!</button>
+        </div>
+
+        <div class="card" style="margin-top:24px; text-align:center;">
+            <p>😆 This is a "useless machine" — a digital toy that serves no real purpose except to make you smile.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Learning HTML | Web Technology Homework</p>
+    </footer>
+
+    <script>
+        const btn = document.getElementById("runBtn");
+        const area = document.getElementById("gameArea");
+        const scoreText = document.getElementById("score");
+        let score = 0;
+
+        // 鼠标靠近按钮时逃跑
+        btn.addEventListener("mouseenter", runAway);
+        // 触屏设备也支持
+        btn.addEventListener("touchstart", function (e) {
+            e.preventDefault();
+            runAway();
+        });
+
+        function runAway() {
+            score++;
+            scoreText.textContent = score;
+
+            // 计算可移动范围
+            const areaRect = area.getBoundingClientRect();
+            const btnRect = btn.getBoundingClientRect();
+
+            const maxX = areaRect.width - btnRect.width - 20;
+            const maxY = areaRect.height - btnRect.height - 20;
+
+            // 随机新位置
+            const newX = Math.floor(Math.random() * maxX) + 10;
+            const newY = Math.floor(Math.random() * maxY) + 10;
+
+            // 移动按钮
+            btn.style.left = newX + "px";
+            btn.style.top = newY + "px";
+            btn.style.transform = "none";
+        }
+
+        // 真的点到了就给彩蛋
+        btn.addEventListener("click", function () {
+            alert("🎉 Wow! You actually clicked it! You are amazing!");
+            score = 0;
+            scoreText.textContent = score;
+        });
+    </script>
+
+</body>
+</html>
